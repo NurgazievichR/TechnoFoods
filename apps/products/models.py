@@ -8,6 +8,7 @@ class Product(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='products')
     popular = models.BooleanField(default = False)
+    views = models.IntegerField(default=0)
 
     def __str__(self) -> str:
         return f"{self.title}. ID:{self.pk}"

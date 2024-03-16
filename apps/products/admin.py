@@ -15,3 +15,4 @@ class ProductParameterInline(admin.TabularInline):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     inlines = (ProductParameterInline, )
+    readonly_fields = ('views', 'id',)
