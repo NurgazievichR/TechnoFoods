@@ -15,8 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+
+
+apipatterns = [
+    path('', include('apps.products.urls')),
+]
+
+# docpatterns = [
+#     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+# ]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/', include(apipatterns)),
+    # path('', include(docpatterns)),
 ]
