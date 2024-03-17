@@ -18,22 +18,38 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from rest_framework import permissions
 
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Inventory Management System",
+      default_version='v1',
+      description="simple product inventory management system",
+      contact=openapi.Contact(email="zr121@auca.kg"),
+      license=openapi.License(name="BSD License"),
+   ),
+   public=True,
+   permission_classes=(permissions.AllowAny,),
+)
 
 
 apipatterns = [
     path('', include('apps.products.urls')),
     path('cases/', include('apps.cases.urls')),
+    path('applications/', include('apps.applications.urls')),
 ]
 
-# docpatterns = [
-#     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-# ]
+docpatterns = [
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include(apipatterns)),
-    # path('', include(docpatterns)),
+    path('', include(docpatterns)),
 ]
 
 if settings.DEBUG:

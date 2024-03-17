@@ -29,11 +29,13 @@ DJANGO_APPS = [
 
 THIRD_APPS = [
     'rest_framework',
+    'drf_yasg',
 ]
 
 LOCAL_APPS = [
     'apps.products',
     'apps.cases',
+    'apps.applications',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_APPS + LOCAL_APPS
