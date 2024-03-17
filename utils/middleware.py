@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404
 from apps.products.models import Product
 import re
 
-
 product_pattern = r'^.*\/api\/v1\/products\/\d+\/$'
 
 class ProductViewsMiddleware:
