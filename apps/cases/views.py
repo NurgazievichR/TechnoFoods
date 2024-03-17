@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework.viewsets import GenericViewSet, mixins
 
-# Create your views here.
+from .models import Case
+from .serializers import CaseSerializer
+
+
+class CasesViewSet(GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    queryset = Case.objects.all()
+    serializer_class = CaseSerializer
+
+    
