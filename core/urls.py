@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 
 apipatterns = [
     path('', include('apps.products.urls')),
+    path('cases/', include('apps.cases.urls')),
 ]
 
 # docpatterns = [
