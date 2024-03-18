@@ -9,4 +9,7 @@ class Case(models.Model):
         return self.title
     
 
-    
+class CaseParameter(models.Model):
+    product = models.ForeignKey(Case, on_delete=models.CASCADE, related_name = 'case_parameters')
+    key = models.CharField(max_length=255)
+    value = models.CharField(max_length=255)

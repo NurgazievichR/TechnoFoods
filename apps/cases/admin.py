@@ -1,5 +1,15 @@
 from django.contrib import admin
 
-from .models import Case
+from .models import Case, CaseParameter
 
-admin.site.register(Case)
+
+class CaseParameterInline(admin.TabularInline):
+    model = CaseParameter
+    fields = ('key','value')
+
+
+
+
+@admin.register(Case)
+class ProductAdmin(admin.ModelAdmin):
+    inlines = (CaseParameterInline,)
