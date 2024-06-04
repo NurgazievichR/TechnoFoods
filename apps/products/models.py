@@ -9,7 +9,7 @@ class Category(models.Model):
 class Product(models.Model):
     title = models.CharField(max_length=255)
     model = models.CharField(max_length=255)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     popular = models.BooleanField(default = False)
     views = models.IntegerField(default=0)
     price = models.PositiveBigIntegerField(default=0)
@@ -17,7 +17,7 @@ class Product(models.Model):
     HaveProduct = models.BooleanField("В наличии",default = False)
 
     def __str__(self) -> str:
-        return f"{self.title}. ID:{self.pk}"
+        return f"{self.title} {self.model}. ID:{self.pk}"
 
     class Meta:
         ordering = ('-id',)
