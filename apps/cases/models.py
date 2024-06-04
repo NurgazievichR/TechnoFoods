@@ -7,6 +7,8 @@ class Case(models.Model):
 
     def __str__(self) -> str:
         return self.title
-    
 
-    
+
+class CaseParameter(models.Model):
+    product = models.ForeignKey(Case, on_delete=models.CASCADE, related_name = 'case_parameters')
+    value = models.CharField(max_length=255)

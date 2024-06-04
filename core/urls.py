@@ -40,6 +40,7 @@ apipatterns = [
     path('', include('apps.products.urls')),
     path('cases/', include('apps.cases.urls')),
     path('applications/', include('apps.applications.urls')),
+    path('promocodes/', include('apps.promocodes.urls')),
 ]
 
 docpatterns = [

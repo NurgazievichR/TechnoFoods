@@ -1,11 +1,7 @@
 asgiref==3.7.2
 Django==5.0.3
-djangorestframework==3.14.0
-pillow==10.2.0
-pytz==2024.1
-sqlparse==0.4.4
-asgiref==3.7.2
-Django==5.0.3
+django-cors-headers==4.3.1
+django-jazzmin==3.0.0
 djangorestframework==3.14.0
 drf-yasg==1.21.7
 inflection==0.5.1
@@ -14,4 +10,5 @@ pillow==10.2.0
 pytz==2024.1
 PyYAML==6.0.1
 sqlparse==0.4.4
+typing_extensions==4.10.0
 uritemplate==4.1.1

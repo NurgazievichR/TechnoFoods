@@ -15,10 +15,17 @@ class ProductParameterInline(admin.TabularInline):
 
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
-    fields = ('image',)
+    fields = ('image','color')
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     inlines = (ProductParameterInline, ProductImageInline)
     readonly_fields = ('views', 'id',)
+    search_fields = ('title',)
+    actions = ['duplicate_selected_products']
+
+    def duplicate_selected_products(self, request, queryset):
+        for product in queryset:
+            product.pk = None
+            product.save()
