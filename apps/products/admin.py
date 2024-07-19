@@ -24,6 +24,7 @@ class ProductAdmin(admin.ModelAdmin):
     readonly_fields = ('views', 'id',)
     search_fields = ('title',)
     actions = ['duplicate_selected_products']
+    prepopulated_fields = {'slug': ('title','model')}
 
     def duplicate_selected_products(self, request, queryset):
         for product in queryset:

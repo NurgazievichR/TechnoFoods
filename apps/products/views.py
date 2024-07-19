@@ -10,6 +10,11 @@ class ProductAPIViewSet(GenericViewSet, mixins.ListModelMixin, mixins.RetrieveMo
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+    def get_object(self):
+        queryset = self.filter_queryset(self.get_queryset())
+        slug = self.kwargs.get('slug')
+        return queryset.get(slug=slug)
+
 
 class CategoryAPIView(GenericViewSet, mixins.ListModelMixin):
     queryset = Category.objects.all()

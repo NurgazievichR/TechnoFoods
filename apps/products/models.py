@@ -1,4 +1,7 @@
+import random
 from django.db import models
+from django.utils.text import slugify
+from unidecode import unidecode
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -15,9 +18,17 @@ class Product(models.Model):
     price = models.PositiveBigIntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name = 'productsOfCategory')
     HaveProduct = models.BooleanField("В наличии",default = False)
+    slug = models.SlugField(unique=True, blank=True, null=True)
 
     def __str__(self) -> str:
         return f"{self.title} {self.model}. ID:{self.pk}"
+
+    def save(self, *args, **kwargs):
+        cand = slugify(unidecode(f"{self.title}-{self.model}"))
+        while self.objects.filter(slug=cand).exists():
+            cand += "".join([random.choice('1234567890') for _ in range(4)])
+        self.slug = cand
+        super().save(*args, **kwargs)
 
     class Meta:
         ordering = ('-id',)
