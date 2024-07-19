@@ -14,7 +14,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'technofoodsapi.pythonanywhere.com']
 
 
 # Application definition
@@ -32,8 +32,7 @@ DJANGO_APPS = [
 THIRD_APPS = [
     'corsheaders',
     'rest_framework',
-    'drf_yasg',
-
+    'drf_yasg', 
 ]
 
 LOCAL_APPS = [
