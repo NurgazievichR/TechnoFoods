@@ -9,7 +9,7 @@ router.register('categories', CategoryAPIView)
 urlpatterns = router.urls
 
 urlpatterns += [
-    path('category_detail/<int:pk>', CategoryProductsView.as_view()),
+    path('category_detail/<int:pk>/', CategoryProductsView.as_view()),
     path('products/', ProductAPIViewSet.as_view({'get': 'list'}), name='product-list'),
     path('products/<slug:slug>/', ProductAPIViewSet.as_view({'get': 'retrieve'}), name='product-detail'),
 ]

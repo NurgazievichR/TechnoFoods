@@ -139,3 +139,5 @@ GitHub.sublime-settings
 
 
 static_files
+worker.py
+technofoods_cache
