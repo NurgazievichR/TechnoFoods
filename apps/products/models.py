@@ -2,7 +2,8 @@ import random
 from django.db import models
 from django.utils.text import slugify
 from unidecode import unidecode
-from PIL import Image
+
+from utils.services import convert_image
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -41,12 +42,8 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name = 'product_images')
 
     def save(self, *args, **kwargs):
-        img_path = self.image.path
-        with Image.open(img_path) as img:
-            img = img.convert('RGB') 
-            img = img.resize((1920, 1080), Image.ANTIALIAS)
-            img.save(img_path, quality=85, optimize=True)
         super().save(*args, **kwargs)
+        convert_image(self.image.path)
 
 class ProductParameter(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name = 'product_parameters')

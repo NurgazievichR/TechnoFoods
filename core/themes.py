@@ -6,15 +6,11 @@ JAZZMIN_SETTINGS = {
     "site_icon": '/assets/icons/admin_logo.png',
     "welcome_sign": "Добро пожаловать в панель администратора сайта TechnoFoods!",
     "copyright": "Ramazan Backend",
-    "search_model": "auth.User",
-    "user_avatar": 'None',
 
     "show_sidebar": True,
     "navigation_expanded": False,
     "hide_apps": [],
     "hide_models": [],
-
-
 
     "default_icon_parents": "fas fa-chevron-circle-right",
     "default_icon_children": "fas fa-thumbtack",
