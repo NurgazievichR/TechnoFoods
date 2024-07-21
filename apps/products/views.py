@@ -13,7 +13,7 @@ class ProductAPIViewSet(GenericViewSet, mixins.ListModelMixin, mixins.RetrieveMo
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
-    @method_decorator(cache_page(60))
+    @method_decorator(cache_page(60*15))
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
 
@@ -30,11 +30,14 @@ class CategoryAPIView(GenericViewSet, mixins.ListModelMixin):
 
 class CategoryProductsView(APIView):
 
-    @method_decorator(cache_page(60))
+    @method_decorator(cache_page(60*15))
     def get(self, request, pk):
         products = Product.objects.filter(category=pk)
         paginator = LimitOffsetPagination()
         paginated_products = paginator.paginate_queryset(products, request)
         serializer = ProductSerializer(paginated_products, many = True)
         cat = get_object_or_404(Category, pk=pk)
-        return Response({'title':cat.name, 'products':serializer.data})
+        return paginator.get_paginated_response({
+            'title':cat.name,
+            'products':serializer.data
+        })
