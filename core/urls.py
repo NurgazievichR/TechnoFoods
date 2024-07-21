@@ -49,7 +49,7 @@ docpatterns = [
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include(apipatterns)),
+    path('api/', include(apipatterns)),
     path('', include(docpatterns)),
 ]
 
