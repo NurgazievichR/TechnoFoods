@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.text import slugify
 from unidecode import unidecode
 
-from utils.services import convert_image
+from utils.services import convert_image, to_webp
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -42,6 +42,7 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name = 'product_images')
 
     def save(self, *args, **kwargs):
+        to_webp(self.image)
         super().save(*args, **kwargs)
         convert_image(self.image.path)
 
