@@ -1,9 +1,9 @@
 JAZZMIN_SETTINGS = {
     "site_title": "TechnoFoods",
     "site_header": "DevDesign",
-    "site_brand": "AskJournal Admin",
-    "site_logo_classes": "img-circle",
-    "site_icon": '/assets/icons/admin_logo.png',
+    "site_brand": "ㅤ",
+    "site_logo_classes": "full",
+    "site_logo": '/vendor/adminlte/img/admin.png',
     "welcome_sign": "Добро пожаловать в панель администратора сайта TechnoFoods!",
     "copyright": "Ramazan Backend",
 

@@ -138,6 +138,6 @@ GitHub.sublime-settings
 .history
 
 
-static_files
+static
 worker.py
 technofoods_cache
